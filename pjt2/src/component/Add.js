@@ -2,9 +2,9 @@ import React, { useRef, useState } from "react"
 import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
 import './Add.css';
 import {useDispatch} from "react-redux";
-import {createWords} from ".././redux/modules/words";
+import {createWords, loadWordsFB, createWordsFB} from ".././redux/modules/words";
 import {useNavigate} from "react-router-dom";
-
+import {db} from ".././firebase";
 
 
 
@@ -20,8 +20,10 @@ function Add(){
     const dispatch = useDispatch();
     let navigate = useNavigate();
 
+
+
     const addWordList = () => {
-        dispatch(createWords({
+        dispatch(createWordsFB({
             word: word.current.value,
             mean: mean.current.value,
             exm: exm.current.value

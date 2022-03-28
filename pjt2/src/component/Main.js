@@ -1,18 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './Main.css';
 import Add from './Add';
 import Card from './Card'
 import {BrowserRouter as Router, Routes, Route, Link, useNavigate} from "react-router-dom"
 import {connect, useDispatch, useSelector} from "react-redux"
-
-
+import {db} from ".././firebase";
+import { collection, getDoc, getDocs, addDoc, updateDoc, doc, deleteDoc} from "firebase/firestore"
+import {createWordsFB, loadWordsFB} from ".././redux/modules/words";
 
 function Main(){
 
     let state = useSelector((state)=>state.words.list);
     let navigate = useNavigate();
     let dispatch = useDispatch();
-    console.log(state);
+    //console.log(state);
+
+   React.useEffect(async()=> {
+      dispatch(loadWordsFB());
+        
+    //     addDoc(collection(db, "pjt_week2"), {text: "new"})
+        
+    //     delete
+    //     const docRef = doc(db, "pjt2", "AnU30JTgSRjgvdTOpRGs");
+    //     deleteDoc(docRef);
+        
+    //     update
+    //     const docRef = doc(db, "pjt2", "92pPIT0SuagA2GJk0OMo");
+    //     updateDoc(docRef, {test: "사슴은 고라니"});
+        
+    //     add
+    //     addDoc(collection(db, "pjt2"),{test: "사슴은 고라니", test: "사슴과", text: "사슴앤고라니", completed: false})
+        
+        // load
+        // const query = await getDocs(collection(db, "pjt2"));
+        // console.log(query)
+        // query.forEach((doc)=>{
+        //     console.log(doc.id, doc.data())
+    //     })
+
+     }, [dispatch]);
 
     return(
         <div>
@@ -31,9 +57,9 @@ function Main(){
                                 </div>
 
                                 <div className="desc">
-                                    <p>단어: {state[i].word}</p>
-                                    <p>의미: {state[i].mean}</p>
-                                    <p style={{color: "darkblue"}}>예시: {state[i].exm}</p> 
+                                    <p>단어: {e.word}</p>
+                                    <p>의미: {e.mean}</p>
+                                    <p style={{color: "darkblue"}}>예시: {e.exm}</p> 
                                     <button className="btn_del">
                                         🗑
                                     </button>
