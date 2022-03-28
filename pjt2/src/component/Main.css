@@ -7,7 +7,13 @@
     font-weight: 400;
     padding-left: 40px;
     padding-right: 40px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+}
+
+body{
+    padding: 0;
+    width: 100%;
+    display: inline-table;
 }
 
 .btn_add{
@@ -22,34 +28,59 @@
     padding:0 5 0 5;
 }
 
+
 .cards{
     border: 1px solid black;
     position: relative;
-    padding: 1px 0px 5px 0px;
+    padding: 5px 0px 5px 0px;
     background-color: rgba(255, 255, 255, 0.4);
     transition: box-shadow 300ms ease-in-out 0s;
     text-align: start;
     display: block;
-    margin: 5px;
     width: 100%;
-    max-width: 450px;
+    max-width: 400px;
+    margin: 7px;
+    float: left;
 }
 
 .title{
     background:darkblue; 
     color:white; 
-    margin: 2.3px; 
-    display: block;
-    margin-bottom: 15px;
+    margin: 2px; 
+    display: flex;
+    margin-bottom: 10px;
     padding-left: 10px;
     padding-top: 3px;
     font-size: medium;
     font-weight: 700;
-
-    
+    height: 30px;
+    margin-bottom: 20px;
 }
 
 .desc{
     font-weight: 1000;
     padding-left: 12px;
 }
+
+.btn_del{
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    color: black;
+    font-weight: 700; 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* 
+.row{
+    display: block;
+    text-align: start;
+    justify-content: start;
+    align-items: flex-start;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: auto;
+    padding-right: auto;
+} */

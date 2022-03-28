@@ -2,19 +2,32 @@ import React, { useRef, useState } from "react"
 import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
 import './Add.css';
 import {useDispatch} from "react-redux";
-import {createWords} from ".././redux/modules/words"
+import {createWords} from ".././redux/modules/words";
+import {useNavigate} from "react-router-dom";
+
+
 
 
 
 
 function Add(){
 
-    const text = useRef(null);
+
+    const word = useRef(null);
+    const mean = useRef(null);
+    const exm = useRef(null);
 
     const dispatch = useDispatch();
+    let navigate = useNavigate();
 
-    const addBucketList = () => {
-        dispatch(createWords(text.current.value));
+    const addWordList = () => {
+        dispatch(createWords({
+            word: word.current.value,
+            mean: mean.current.value,
+            exm: exm.current.value
+        }
+            ));
+        navigate('/');
     }
 
 
@@ -31,7 +44,7 @@ function Add(){
                 <div >
                     <p style={{margin:"10px"}}> 
                         <span style={{backgroundColor:"black"}}> 단어 </span> 
-                        <input type="text" ref={text}
+                        <input type="text" ref={word}
                         placeholder="단어를 입력해주세요" 
                         style={{height:"40px", width:"100%"}} ></input>
                     </p> 
@@ -39,7 +52,7 @@ function Add(){
                 <div >
                     <p style={{margin:"10px"}}> 
                         <span style={{backgroundColor:"black"}}> 의미 </span> 
-                        <input type="text" ref={text}
+                        <input type="text" ref={mean}
                         placeholder="의미를 입력해주세요" 
                         style={{height:"100px", width:"100%"} } ></input>
                     </p>            
@@ -47,14 +60,14 @@ function Add(){
                 <div >
                     <p style={{margin:"10px"}}> 
                         <span style={{backgroundColor:"black"}}> 예시 </span> 
-                        <input type="text" ref={text}
+                        <input type="text" ref={exm}
                         placeholder="예시를 입력해주세요" 
                         style={{height:"100px", width:"100%"}} ></input>
                     </p>
                 </div>
                 <Link to="/">
                 <button style={{display: "flex", marginLeft:"auto", marginRight:"auto" }}
-                onClick={addBucketList}>
+                onClick={addWordList}>
                     💾
                 </button>
                 </Link>
