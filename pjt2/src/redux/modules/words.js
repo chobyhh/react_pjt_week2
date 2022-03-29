@@ -48,13 +48,32 @@ export const loadWordsFB = ()=>{
 export const createWordsFB =(words) =>{
     return async function (dispatch) {
         const docRef = await addDoc(collection(db, "pjt2"), words);
-        const _words = await getDoc(docRef);
         const words_data = {id: docRef.id, ...words.data()};
         console.log((await getDoc(docRef)).id, (await getDoc(docRef)).data());
         dispatch(createWords(words_data))
     }
 }
 
+// export const updateWordsFB = (words, words_id) => {
+//     return function (dispatch) {
+//         words_data.doc(id).update(words);
+//         const word_data = { ...words, id };
+//         dispatch(updateWords(word_data));
+//     };
+// };
+
+export const deleteWordsFB = (words_id) => {
+    return async function (dispatch, getState) {
+      console.log(words_id);
+      const docRef = doc(db, "pjt2", words_id);
+      await deleteDoc(docRef);
+      const _words_list = await getState().words.list;
+      const words_index = _words_list.findIndex((data) => {
+        return data === words_id;
+      });
+      dispatch(deleteWords(words_id));
+    };
+  };
 
 
 // Reducer
@@ -67,6 +86,12 @@ export default function reducer(state = wordState, action = {}) {
         case "words/CREATE" : {
             const new_word = [...state.list, action.words];
             return{list : new_word};
+        }
+        case "words/DELETE": {
+            const new_words_list = state.list.filter((l, idx) => {
+              return parseInt(action.words_index) !== idx;
+            });
+            return { list: new_words_list };
         }
 
         default: 

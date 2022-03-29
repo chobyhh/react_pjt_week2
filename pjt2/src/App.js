@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Main from './component/Main'
 import Add from './component/Add';
+import Card from './component/Card';
 import AddCard from './component/Card'
 import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
 import {db} from "./firebase";
@@ -28,6 +29,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />}></Route>
           <Route path="/add" element={<Add />}></Route>
+          <Route path="/detail" element={<Card />}></Route>
         </Routes>
       </Router>
       

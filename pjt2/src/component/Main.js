@@ -6,7 +6,8 @@ import {BrowserRouter as Router, Routes, Route, Link, useNavigate} from "react-r
 import {connect, useDispatch, useSelector} from "react-redux"
 import {db} from ".././firebase";
 import { collection, getDoc, getDocs, addDoc, updateDoc, doc, deleteDoc} from "firebase/firestore"
-import {createWordsFB, loadWordsFB} from ".././redux/modules/words";
+import {createWordsFB, loadWordsFB, deleteWordsFB} from ".././redux/modules/words";
+
 
 function Main(){
 
@@ -51,18 +52,27 @@ function Main(){
                     state.map((e, i)=>{
                         return(
                 
-                            <div className="cards" key={i}>
+                            <div className="cards" key={i} id={e.id}>
                                 <div className="title">
-                                    <p>단어</p>     
+                                    <p>단어</p>
+                                    <div className="btn_t">  
+                                        <Link to="/detail">
+                                            <button style={{backgroundColor:"transparent", border:"none", color:"white",fontSize:"small", fontWeight:"700"}}>
+                                                ✂
+                                            </button>
+                                        </Link> 
+                                        <button style={{backgroundColor:"transparent", border:"none", color:"white",fontSize:"small", fontWeight:"700"}}
+                                         onClick={() => {dispatch(deleteWordsFB(e.id)); navigate("/");}}>
+                                            🗑
+                                        </button> 
+                                    </div>  
                                 </div>
 
                                 <div className="desc">
                                     <p>단어: {e.word}</p>
                                     <p>의미: {e.mean}</p>
                                     <p style={{color: "darkblue"}}>예시: {e.exm}</p> 
-                                    <button className="btn_del">
-                                        🗑
-                                    </button>
+                                    
                 
                                 </div>  
                             </div> 

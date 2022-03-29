@@ -22,7 +22,7 @@ function Add(){
 
 
 
-    const addWordList = () => {
+    const createWords = () => {
         dispatch(createWordsFB({
             word: word.current.value,
             mean: mean.current.value,
@@ -69,7 +69,7 @@ function Add(){
                 </div>
                 <Link to="/">
                 <button style={{display: "flex", marginLeft:"auto", marginRight:"auto" }}
-                onClick={addWordList}>
+                onClick={createWords}>
                     💾
                 </button>
                 </Link>
