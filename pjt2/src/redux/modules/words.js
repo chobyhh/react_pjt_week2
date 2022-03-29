@@ -71,7 +71,7 @@ export const deleteWordsFB = (words_id) => {
       const words_index = _words_list.findIndex((data) => {
         return data === words_id;
       });
-      dispatch(deleteWords(words_id), window.location.replace("/"));
+      dispatch(deleteWords(words_index));
     };
   };
 
