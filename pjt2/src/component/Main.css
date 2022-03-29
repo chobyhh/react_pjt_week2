@@ -37,9 +37,10 @@ body{
     transition: box-shadow 300ms ease-in-out 0s;
     text-align: start;
     display: block;
-    width: 100%;
-    max-width: 400px;
-    margin: 7px;
+    width: 370px;
+    height: 250px;
+    /* min-width: 350px; */
+    margin: 14px;
     float: left;
 }
 

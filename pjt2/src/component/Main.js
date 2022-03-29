@@ -47,12 +47,12 @@ function Main(){
                 <div>Yoonictionary</div>
                 <Link to="/add"><button className="btn_add">+</button></Link>
             </div> 
-           
+           <div style={{border:"1px solid red", maxWidth:"1200px", height:"100vh", display:"inline-table",  margin:"auto", }}>
                 {
                     state.map((e, i)=>{
                         return(
-                
-                            <div className="cards" key={i} id={e.id}>
+                            
+                            <div  className="cards"  key={i} id={e.id}>
                                 <div className="title">
                                     <p>단어</p>
                                     <div className="btn_t">  
@@ -81,7 +81,7 @@ function Main(){
                     })
                 }       
 
-
+</div>
         </div> 
     );
 }
