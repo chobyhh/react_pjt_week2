@@ -7,7 +7,7 @@ import { async } from "@firebase/util";
 // Actions type
 const LOAD = 'words/LOAD';
 const CREATE = 'words/CREATE';
-const UPDATE = 'words/UPDATE';
+// const UPDATE = 'words/UPDATE';
 const DELETE = "words/DELETE";
 
 const wordState = {
@@ -21,9 +21,9 @@ export function loadWords(words_list) {
 export function createWords(words) {
     return { type: CREATE, words };
 }
-export function updateWords(words_index) {
-    return { type: UPDATE, words_index };
-}
+// export function updateWords(words_index) {
+//     return { type: UPDATE, words_index };
+// }
 export function deleteWords(words_index) {
     return { type: DELETE, words_index };
 }
@@ -55,10 +55,16 @@ export const createWordsFB =(words) =>{
 }
 
 // export const updateWordsFB = (words, words_id) => {
-//     return function (dispatch) {
-//         words_data.doc(id).update(words);
-//         const word_data = { ...words, id };
-//         dispatch(updateWords(word_data));
+//     return async function (dispatch, getState) {
+//       console.log(words_id);
+//       const docRef = doc(db, "pjt2", words_id);
+//       await updateDoc(docRef);
+      
+//       const _words_list = getState().words.list;
+//       const words_index = _words_list.findIndex((b) => {
+//         return b.id === words_id;
+//       });
+//       dispatch(updateWords(words_index));
 //     };
 // };
 
@@ -67,9 +73,10 @@ export const deleteWordsFB = (words_id) => {
       console.log(words_id);
       const docRef = doc(db, "pjt2", words_id);
       await deleteDoc(docRef);
-      const _words_list = await getState().words.list;
-      const words_index = _words_list.findIndex((data) => {
-        return data === words_id;
+      
+      const _words_list = getState().words.list;
+      const words_index = _words_list.findIndex((b) => {
+        return b.id === words_id;
       });
       dispatch(deleteWords(words_index));
     };
@@ -88,10 +95,10 @@ export default function reducer(state = wordState, action = {}) {
             return{list : new_word};
         }
         case "words/DELETE": {
-            const new_words_list = state.list.filter((l, idx) => {
+            const del_word = state.list.filter((list, idx) => {
               return parseInt(action.words_index) !== idx;
             });
-            return { list: new_words_list };
+            return {...state, list: del_word, };
         }
 
         default: 

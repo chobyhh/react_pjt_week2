@@ -29,7 +29,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />}></Route>
           <Route path="/add" element={<Add />}></Route>
-          <Route path="/detail" element={<Card />}></Route>
         </Routes>
       </Router>
       
