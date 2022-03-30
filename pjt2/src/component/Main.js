@@ -64,10 +64,12 @@ function Main(){
                                     <p>단어: {e.word}</p>
                                     <p>의미: {e.mean}</p>
                                     <p style={{color: "darkblue"}}>예시: {e.exm}</p> 
-                                    <button style={{backgroundColor:"transparent", border:"none", color:"black", fontWeight:"700", display:"block", textAlign:"center", alignItems: "center"}}
-                                        onClick={() => {dispatch(deleteWordsFB(e.id)); navigate("/");}}>
-                                        🗑
-                                    </button>           
+                                    <div style={{display:"flex", justifyContent: "center", alignItems:"center"}}>
+                                        <button style={{backgroundColor:"transparent", border:"none", color:"black", fontWeight:"700", display:"flex", justifyContent: "center", alignItems:"center", position: "absolute", paddingTop:"80px"}}
+                                            onClick={() => {dispatch(deleteWordsFB(e.id)); navigate("/");}}>
+                                            🗑
+                                        </button>    
+                                    </div>       
                                 </div>  
                             </div> 
             
