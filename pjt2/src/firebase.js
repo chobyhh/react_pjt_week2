@@ -7,7 +7,7 @@ import { getFirestore } from "firebase/firestore";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDev2rBFjyeNbdP4YWPU0vdCdckSVUzJN4",
+  apiKey: "키 가리기",
   authDomain: "sparta-react-pjt2.firebaseapp.com",
   projectId: "sparta-react-pjt2",
   storageBucket: "sparta-react-pjt2.appspot.com",
